@@ -1,22 +1,34 @@
 A simple testing library that allows you to test pairs.
-Example:
+A simple example for testing that adding and subtracting are working:
 ``` rust
-use test_pairs::test_pairs;
+#[test]
+fn adding() {
+    let pairs = [
+        (0, 1),
+        (2, 3),
+        (3, 4)
+    ];
+    test_pairs(
+        &pairs,
+        |a, b| a + 1,
+        |b, a| b - 1
+    );
+}
+```
 
-let pairs: Vec<(u8, u8)> = [
-    (0x00, 0x00)
-    (0x0F, 0xF0)
-    (0xF0, 0x0F)
-    (0xFF, 0xFF)
-]
-
-test_pairs(
-    &pairs,
-    |a, b| {
-        a.to_le()
-    },
-    |b, a| {
-        b.to_be()
-    }
-)
+If you only want to test turning a into b, but not b into a, you can simply return a:
+``` rust
+#[test]
+fn adding() {
+    let pairs = [
+        (0, 1),
+        (2, 3),
+        (3, 4)
+    ];
+    test_pairs(
+        &pairs,
+        |a, b| a + 1,
+        |b, a| a
+    );
+}
 ```
