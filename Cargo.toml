@@ -2,6 +2,7 @@
 license = "MIT"
 keywords = ["test"]
 description = "A simple testing utility that lets you test pairs"
+repository = "https://github.com/rosew0od/test_pairs"
 readme = "README.md"
 name = "test_pairs"
 version = "0.1.0"
